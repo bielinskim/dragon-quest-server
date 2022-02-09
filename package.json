@@ -1,0 +1,24 @@
+{
+  "name": "dragon-quest-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel ./src -d dist",
+    "server": "node -r dotenv/config dist/index.js",
+    "start": "npm run build && node -r dotenv/config dist/index.js",
+    "watch": "nodemon --watch --exec npm start"
+  },
+  "author": "Mateusz Bieliński",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "sequelize": "^6.16.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
