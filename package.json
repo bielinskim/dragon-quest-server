@@ -7,7 +7,11 @@
     "build": "babel ./src -d dist",
     "server": "node -r dotenv/config dist/index.js",
     "start": "npm run build && node -r dotenv/config dist/index.js",
-    "watch": "nodemon --watch --exec npm start"
+    "watch": "nodemon --watch --exec npm start",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "seed": "npx sequelize-cli db:seed:all",
+    "seed:undo:all": "npx sequelize-cli db:seed:all"
   },
   "author": "Mateusz Bieliński",
   "license": "ISC",
@@ -16,12 +20,14 @@
     "dotenv": "^16.0.0",
     "eslint": "^8.8.0",
     "express": "^4.17.2",
-    "sequelize": "^6.16.0"
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.0",
     "@babel/core": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1"
   }
 }

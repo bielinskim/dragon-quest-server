@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 //import cors from 'cors';
-import characters from './endpoints/characters';
-import quests from './endpoints/quests';
+import characters from './api/characters';
+import quests from './api/quests';
 
 const app = express();
 

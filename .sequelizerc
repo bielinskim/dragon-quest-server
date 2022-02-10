@@ -1,0 +1,10 @@
+const path = require('path');
+const dotEnv = require('dotenv');
+
+const paths = {
+    'config': path.resolve('sequelize-migrator.config.js'),
+};
+
+dotEnv.config();
+
+module.exports = paths;
