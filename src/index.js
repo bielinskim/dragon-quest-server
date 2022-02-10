@@ -1,22 +1,16 @@
+import http from 'http';
+import app from './app';
 
-const express = require('express')
-const app = express()
-const port = 3000
-const quests = require('../data/quests');
-const characters = require('../data/characters');
+const { SERVER_PORT } = process.env;
 
-app.get('/', (req, res) => {
-    res.json([{ id: 1, level: 2, minExp: 3, maxExp: 4  }])
-})
+const init = () => {
+  const server = http.createServer(app);
 
-app.get('/quest', (req, res) => {
-  res.json(quests)
-})
+  server.listen(SERVER_PORT);
 
-app.get('/character', (req, res) => {
-  res.json(characters)
-})
+  console.log(`Server is running on port ${SERVER_PORT}!`);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+};
+
+init();
+
