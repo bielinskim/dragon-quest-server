@@ -1,23 +1,20 @@
 import sequelize from "../../sequelize";
 import { DataTypes } from 'sequelize';
-import getCharacters from './operations';
+import registerUser from "./operations/registerUser";
+import loginUser from "./operations/loginUser";
 
-const Character = sequelize.define('characters', {
-    characterId: {
+const User = sequelize.define('users', {
+    userId: {
         primaryKey: true,
         type: DataTypes.INTEGER(10).UNSIGNED,
         autoIncrement: true,
       },
-      name: {
+      login: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      experience: {
-        type: DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false,
-      },
-      imageId: {
-        type: DataTypes.INTEGER(10).UNSIGNED,
+      password: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
 },
@@ -27,6 +24,7 @@ const Character = sequelize.define('characters', {
   collate: 'utf8_polish_ci'
 });
 
-Character.getCharacters = getCharacters;
+User.registerUser = registerUser;
+User.loginUser = loginUser;
 
-export default Character;
+export default User;

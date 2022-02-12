@@ -1,13 +1,14 @@
-import express, { Router } from "express";
-//import cors from 'cors';
-import characters from './api/characters';
-import quests from './api/quests';
+import express from "express";
+import character from './api/character';
+import quest from './api/quest';
+import user from './api/user';
 
 const app = express();
 
-//app.use(cors());
+app.use(express.json({}))
 
-app.use('/characters', characters);
-app.use('/quests', quests);
+app.use('/character', character);
+app.use('/quest', quest);
+app.use('/user', user);
 
 export default app;

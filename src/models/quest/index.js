@@ -1,5 +1,6 @@
 import sequelize from "../../sequelize";
 import { DataTypes } from 'sequelize';
+import getQuests from "./operations";
 
 const Quest = sequelize.define('quests', {
     questId: {
@@ -31,6 +32,13 @@ const Quest = sequelize.define('quests', {
         type: DataTypes.STRING,
         allowNull: false,
       }
+},
+{
+  timestamps: false,
+  charset: 'utf8',
+  collate: 'utf8_polish_ci'
 });
+
+Quest.getQuests = getQuests;
 
 export default Quest;
