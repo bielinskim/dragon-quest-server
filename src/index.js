@@ -1,6 +1,7 @@
 import http from 'http';
 import app from './app';
 import sequelize from './sequelize';
+import modelsAssociate from './models';
 
 const { SERVER_PORT } = process.env;
 
@@ -12,6 +13,8 @@ const init = () => {
   console.log(`Server is running on port ${SERVER_PORT}!`);
 
   sequelize.authenticate();
+
+  modelsAssociate();
 
 };
 

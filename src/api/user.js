@@ -2,7 +2,7 @@ import { Router } from "express";
 import User from "../models/user";
 
 const router = Router();
-const { registerUser, loginUser } = User;
+const { registerUser, loginUser, getUserCharacters } = User;
 
 router.route('/register')
 .post(async (req, res) => {
@@ -11,10 +11,11 @@ router.route('/register')
 
         res.send(user); 
     } catch (e) {
+        console.error(e);
         if(e.name === 'UniqueConstraintError') {
-            res.status = 409;
+            res.status(409);
         }
-        res.send();
+        res.send({message: 'Login zajęty'});
     }
    
 });
@@ -25,7 +26,8 @@ router.route('/login')
         const user = await loginUser(req.body);
 
         res.send(user); 
-    } catch (error) {
+    } catch (e) {
+        console.error(e);
         res.status(400);
         res.end();
     }

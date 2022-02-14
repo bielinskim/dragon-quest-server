@@ -8,10 +8,15 @@ module.exports = {
    login: {
      type: Sequelize.STRING,
      allowNull: false,
+     unique: true,
    },
    password: {
     type: Sequelize.STRING,
      allowNull: false,
+   },
+   token: {
+    type: Sequelize.STRING,
+    allowNull: false,
    },
   }),
   down: async (queryInterface, Sequelize) => queryInterface.dropTable('users'),

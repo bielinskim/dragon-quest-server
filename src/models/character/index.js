@@ -1,6 +1,7 @@
 import sequelize from "../../sequelize";
 import { DataTypes } from 'sequelize';
 import getCharacters from './operations';
+import associate from "./associate";
 
 const Character = sequelize.define('characters', {
     characterId: {
@@ -10,10 +11,6 @@ const Character = sequelize.define('characters', {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      experience: {
-        type: DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,
       },
       imageId: {
@@ -28,5 +25,6 @@ const Character = sequelize.define('characters', {
 });
 
 Character.getCharacters = getCharacters;
+Character.associate = associate;
 
 export default Character;

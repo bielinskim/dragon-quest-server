@@ -9,10 +9,6 @@ module.exports = {
      type: Sequelize.STRING,
      allowNull: false,
    },
-   experience: {
-     type: Sequelize.INTEGER(10).UNSIGNED,
-     allowNull: false,
-   },
    imageId: {
      type: Sequelize.INTEGER(10).UNSIGNED,
      allowNull: false,
