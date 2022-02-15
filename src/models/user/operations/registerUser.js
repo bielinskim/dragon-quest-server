@@ -40,6 +40,7 @@ const registerUser = async ({ login, password }) => {
         return result;
 
     } catch (error) {
+        console.error(error);
         if (error.name === 'SequelizeUniqueConstraintError') {
             throw new UniqueConstraintError('Login zajęty');
         } else {

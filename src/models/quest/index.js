@@ -1,6 +1,7 @@
 import sequelize from "../../sequelize";
 import { DataTypes } from 'sequelize';
 import getQuests from "./operations";
+import associate from "./associate";
 
 const Quest = sequelize.define('quests', {
     questId: {
@@ -40,5 +41,6 @@ const Quest = sequelize.define('quests', {
 });
 
 Quest.getQuests = getQuests;
+Quest.associate = associate;
 
 export default Quest;

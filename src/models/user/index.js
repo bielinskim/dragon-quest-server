@@ -23,6 +23,10 @@ const User = sequelize.define('users', {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      lastQuestDraw: {
+        type: DataTypes.DATE,
+        allowNull: true,
+       },
 },
 {
   timestamps: false,

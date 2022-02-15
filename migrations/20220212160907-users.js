@@ -18,6 +18,10 @@ module.exports = {
     type: Sequelize.STRING,
     allowNull: false,
    },
+   lastQuestDraw: {
+    type: Sequelize.DATE,
+    allowNull: true,
+   },
   }),
   down: async (queryInterface, Sequelize) => queryInterface.dropTable('users'),
  };

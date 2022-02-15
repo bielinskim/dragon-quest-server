@@ -1,12 +1,11 @@
 import sequelize from "../../../sequelize";
 
-const getUserCharacters = async (req) => {
-
-    const { usersCharacters, characters, users } = sequelize.models;
+const getUserQuests = async (req) => {
+    const { usersQuests, quests, users } = sequelize.models;
     const { token } = req.headers;
 
-        const data = await usersCharacters.findAll({
-            attributes: ['userCharacterId', 'experience'],
+        const data = await usersQuests.findAll({
+            attributes: ['userQuestId'],
             include: [{
                 model: users,
                 where: {
@@ -15,11 +14,11 @@ const getUserCharacters = async (req) => {
                 attributes: [],
             },
             {
-                model: characters,
+                model: quests,
             }]
         });
 
     return data;
 }
 
-export default getUserCharacters;
+export default getUserQuests;
