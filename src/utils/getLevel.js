@@ -12,7 +12,7 @@ const levels = [
 ]
 
 const getLevel = experience => {
-    const { level } = levels.find(lvl => lvl.minExp > experience && lvl.maxExp > experience);
+    const { level } = levels.find(lvl => lvl.minExp <= experience && lvl.maxExp > experience);
 
     return level;
 }

@@ -2,6 +2,7 @@ import sequelize from "../../sequelize";
 import { DataTypes } from 'sequelize';
 import associate from "./associate";
 import getUserQuests from "./operations/getUserQuests";
+import startQuest from "./operations/startQuest";
 
 const UserQuest = sequelize.define('usersQuests', {
     userQuestId: {
@@ -17,6 +18,14 @@ const UserQuest = sequelize.define('usersQuests', {
         type: DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,
     },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: true,
+     },
+     startDate: {
+      type: DataTypes.DATE,
+      allowNull: true,
+     },
 },
 {
   timestamps: false,
@@ -26,5 +35,6 @@ const UserQuest = sequelize.define('usersQuests', {
 
 UserQuest.associate = associate;
 UserQuest.getUserQuests = getUserQuests;
+UserQuest.startQuest = startQuest;
 
 export default UserQuest;

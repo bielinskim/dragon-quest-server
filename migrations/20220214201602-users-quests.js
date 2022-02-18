@@ -20,7 +20,15 @@ module.exports = {
       key: 'questId'
     },
     allowNull: false
-    }
+    },
+    status: {
+      type: Sequelize.STRING,
+      allowNull: true,
+     },
+     startDate: {
+      type: Sequelize.DATE,
+      allowNull: true,
+     },
   }),
   down: async (queryInterface, Sequelize) => queryInterface.dropTable('usersQuests'),
  };
