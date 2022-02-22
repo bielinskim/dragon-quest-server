@@ -12,7 +12,7 @@ const getUserQuests = async (req) => {
     }
 
         const data = await usersQuests.findAll({
-            attributes: ['userQuestId'],
+            attributes: ['userQuestId', 'status', 'startDate'],
             where:  {
                 [Op.or]: [
                   { status: ACTIVE },
