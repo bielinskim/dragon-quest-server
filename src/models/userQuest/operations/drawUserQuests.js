@@ -2,6 +2,7 @@ import sequelize from "../../../sequelize";
 import  { Op } from 'sequelize';
 import getLevel from '../../../utils/getLevel';
 import questStatuses from '../../../utils/questStatuses';
+import getRandomInt from "../../../utils/getRandomInt";
 
 const drawUserQuests = async userId => {
     const { characters, usersCharacters, quests, usersQuests, users } = sequelize.models;
@@ -49,22 +50,25 @@ const drawUserQuests = async userId => {
             },
         });
 
+
         const userQuestsToCreate = [];
+        const questsPerCharacter = 2;
+        const min = 0;
+        const max = questsInLevelsRange.length - 1;
+        const status = 'ACTIVE';
 
         // wylosowanie i przygotowanie do zapisu zadan
-        for (let i = 0; i < questsInLevelsRange.length; i++) {
-            const { questId } = questsInLevelsRange[i].get({plain:true});
-
-            if(Math.random() > 0.2) {
-                const status = 'ACTIVE';
+        for (let i = 0; i < userCharactersEntries.length; i++) {
+           for (let j = 0; j < questsPerCharacter; j++) {
+                const drawnQuestIndex = getRandomInt(min, max);
+                const { questId } = questsInLevelsRange[drawnQuestIndex].get({plain:true});
 
                 userQuestsToCreate.push({ userId, questId, status});
-            }
+               
+           }
         }
 
         console.log(`Drawn quests: ${userQuestsToCreate}`);
-
-        
 
         await sequelize.transaction(async (t) => {
 

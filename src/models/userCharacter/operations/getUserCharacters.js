@@ -26,6 +26,7 @@ const getUserCharacters = async (req) => {
             },
             {
                 model: usersQuests,
+                required: false,
                 attributes: ['userQuestId', 'status'],
                 where: {
                     status: PENDING
@@ -33,7 +34,8 @@ const getUserCharacters = async (req) => {
                 through: {
                     attributes: []
                 }
-            }]
+            }
+        ]
         },
        );
 
