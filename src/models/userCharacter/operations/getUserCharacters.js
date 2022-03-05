@@ -1,8 +1,11 @@
 import sequelize from "../../../sequelize";
+import questStatuses from "../../../utils/questStatuses";
+
+const { PENDING  } = questStatuses;
 
 const getUserCharacters = async (req) => {
 
-    const { usersCharacters, characters, users } = sequelize.models;
+    const { usersCharacters, characters, users, usersQuests, quests } = sequelize.models;
     const { token } = req.headers;
 
     if (!token) {
@@ -20,8 +23,19 @@ const getUserCharacters = async (req) => {
             },
             {
                 model: characters,
+            },
+            {
+                model: usersQuests,
+                attributes: ['userQuestId', 'status'],
+                where: {
+                    status: PENDING
+                },
+                through: {
+                    attributes: []
+                }
             }]
-        });
+        },
+       );
 
     return data;
 }

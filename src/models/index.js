@@ -8,6 +8,7 @@ import UserQuestUserCharacter from "./userQuestUserCharacter";
 const modelsAssociate = () => {
     
     User.associate();
+    Quest.associate();
     Character.associate();
     UserCharacter.associate();
     UserQuest.associate();
